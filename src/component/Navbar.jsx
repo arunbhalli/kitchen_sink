@@ -1,16 +1,33 @@
-import React from "react"
-
-import React from 'react'
-
-const Navbar = () => {
+import React from 'react';
+import {Link, withRouter, NavLink } from 'react-router-dom';
+import { Container, Menu} from 'semantic-ui-react';
+const Navbar = (props) => {
+  setTimeout(() =>{
+    props.history.push('../about')
+  },10000)
   return (
-    <nav>
-      <a >Gloria</a>
-      <div>
-        <button><a href="/">Home</a> </button>
-      </div>
-    </nav>
-  )
-}
+    <Container>
+      <Menu>
+        <Menu.Item>
+          <nav className="ui raised very padded segment">
+            <Link >Gloria</Link>
+            <div className="ui right floated segment">
+              <button>
+                <Link to="/">Home</Link>
+              </button>
+              <button>
+                <NavLink to="/about">About </NavLink>
+              </button>
+              <button>
+                <NavLink to="/contact">Contact</NavLink>
+              </button>
+            </div>
+          </nav>
+        </Menu.Item>
+      </Menu>
+    </Container>
+  );
+};
 
-export default Navbar
+export default withRouter(Navbar);
+// # withRouter higher order componenet
